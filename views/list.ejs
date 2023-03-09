@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>To Do List</title>
+
+    <link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+
+    <div class="box" id="heading">
+        <h1><%= (listName === "today") ? day : listName %></h1>
+    </div>
+    <div class="box">
+
+               <% todoListItems.forEach(item => { %>
+                <%let deleteUrl = "/" + listName + "/delete/" + item._id  %>
+                <form action="<%=deleteUrl%>" method="post">
+                    <div class="item">
+                        <input type="checkbox" name="checkbox" onChange="this.form.submit()">
+                    <p><%=item.name%></p>
+                    </div>
+                </form>
+              <%  }); %>
+                
+    
+              <%let postUrl = "/" + listName  %>
+           <form class="item" action="<%=listName%>" method="post">
+            
+                <input type="text" placeholder="New Item" name="noteText" autocomplete="off">
+                <button type="submit" name="button">+</button>
+            </form>
+       
+    </div>
+
+   
+
+
+</body>
+</html>
